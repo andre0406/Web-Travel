@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesan!</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://kit.fontawesome.com/9e511c20e6.js" crossorigin="anonymous"></script>
+
+    <style>
+      :root {
+        --primary: #b5a98f;
+        --bg: #a55c3c;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        color: #fff;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.4rem 7%;
+        background-color: rgba(1, 1, 1, 0.8);
+        border-bottom: 1px solid #5f4730;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+      }
+
+      .navbar .navbar-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #ddd;
+        font-style: italic;
+      }
+
+      .navbar .navbar-logo span {
+        color: var(--primary);
+      }
+
+      .navbar .navbar-nav {
+        margin-left: 35rem;
+      }
+
+      .navbar .navbar-nav a {
+        color: #fff;
+        display: inline-block;
+        font-size: 1.2rem;
+        margin: 0 1rem;
+      }
+
+      .navbar .navbar-extra a {
+        color: #fff;
+        margin: 0 0.5rem;
+      }
+
+      .engine,
+      .schedule {
+        padding: 6.5rem 7% 1.4rem;
+      }
+
+      .engine h2 {
+        text-align: left;
+        font-size: 1.7rem;
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+        color: #333;
+      }
+
+      .engine h2 span {
+        color: var(--primary);
+      }
+
+      .engine .mesin {
+        margin-top: 2rem;
+      }
+
+      .engine .mesin h2 {
+        color: #333;
+      }
+
+      .engine .mesin ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+      .engine .mobil {
+        margin: 1rem;
+        padding: 3rem;
+        border: 1px solid #ddd;
+        border-radius: 1rem;
+        background-image: url(mobil.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-size: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .engine .mobil:hover {
+        transform: scale(1.05);
+      }
+
+      .engine .pesawat {
+        margin: 1rem;
+        padding: 3rem;
+        border: 1px solid #ddd;
+        border-radius: 1rem;
+        background-image: url(pesawat.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-size: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .engine .pesawat:hover {
+        transform: scale(1.05);
+      }
+
+      .engine .kereta {
+        margin: 1rem;
+        padding: 3rem;
+        border: 1px solid #ddd;
+        border-radius: 1rem;
+        background-image: url(kereta.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-size: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .engine .kereta:hover {
+        transform: scale(1.05);
+      }
+
+      .schedule h2 {
+        color: #010101;
+        margin-left: 8rem;
+      }
+
+      .schedule h2 span {
+        color: var(--primary);
+      }
+
+      .schedule .container {
+        width: 50rem;
+        height: 13rem;
+        border-radius: 2rem;
+        margin: 30px auto;
+        padding: 5px;
+        box-sizing: border-box;
+        background-color: #cacaca;
+      }
+
+      .schedule .container .sopir {
+        color: #010101;
+        width: 20rem;
+        height: 3rem;
+        margin-top: 1rem;
+        margin-left: 2rem;
+        display: flex;
+      }
+
+      .schedule .container .lokasi {
+        color: #010101;
+        margin-left: 1rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .schedule .container .tanggal {
+        color: #010101;
+        width: 48rem;
+        display: flex;
+        margin-left: 1rem;
+      }
+
+      .schedule .container .tanggal .selesai {
+        color: #010101;
+        margin-left: 3rem;
+      }
+
+      .schedule .container .tanggal .cta {
+        margin-left: 10rem;
+        background-color: #ff6600;
+        color: #fff;
+        padding: 5px 30px;
+        font-size: 1.5rem;
+        border-radius: 5px;
+      }
+
+      .plane h2 {
+        color: #010101;
+        margin-left: 14rem;
+      }
+
+      .plane h2 span {
+        color: var(--primary);
+      }
+
+      .plane .container {
+        width: 50rem;
+        height: 16.5rem;
+        border-radius: 2rem;
+        margin: 30px auto;
+        padding: 5px;
+        box-sizing: border-box;
+        background-color: #cacaca;
+      }
+
+      .plane .container .kelas {
+        color: #010101;
+        width: 40rem;
+        height: 3rem;
+        margin-top: 1rem;
+        margin-left: 2rem;
+        display: flex;
+      }
+
+      .plane .container .penumpang {
+        color: #010101;
+        margin-left: 1rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .plane .container .tanggal {
+        color: #010101;
+        margin-left: 1rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .plane .container .tempat {
+        color: #010101;
+        width: 48rem;
+        display: flex;
+        margin-left: 1rem;
+      }
+
+      .plane .container .tempat .selesai {
+        color: #010101;
+        margin-left: 3rem;
+      }
+
+      .plane .container .tempat .cta {
+        margin-left: 10rem;
+        background-color: #ff6600;
+        color: #fff;
+        padding: 5px 30px;
+        font-size: 1.5rem;
+        border-radius: 5px;
+      }
+
+      .footer {
+        color: #010101;
+        background: #fff;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .footer-section {
+        flex-basis: 20%;
+        padding: 10px;
+      }
+      .footer-section h3 {
+        color: #00a8e1;
+      }
+      .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      .footer-section ul li {
+        margin-bottom: 10px;
+      }
+      .payment-partners img {
+        width: 50px;
+        margin-right: 10px;
+      }
+      .social-media img {
+        width: 24px;
+        margin-right: 10px;
+      }
+      .contact .content {
+        text-align: center;
+        font-size: 1.6rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="proyek1.html" class="navbar-logo">SATYA<span>TRAVEL</span></a>
+
+      <div class="navbar-nav">
+        <a href="#engine"></a>
+        <a href="#schedule">Pemesanan</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="book-open"><i data-feather="book-open"></i></a>
+        <a href="#" id="search"><i data-feather="search"></i></a>
+      </div>
+    </nav>
+
+    <section class="engine" id="engine">
+      <h2><span>Jasa Travel</span> Yang Kami Sediakan</h2>
+
+      <div class="mesin">
+        <ul>
+          <li class="mobil">
+            <h3>Rental Mobil</h3>
+            <p>Perjalanan bersama keluarga</p>
+          </li>
+          <li class="pesawat">
+            <h3>Tiket Pesawat</h3>
+            <p>Perjalanan cepat jalur udara!</p>
+          </li>
+          <li class="kereta">
+            <h3>Tiket Kereta</h3>
+            <p>Perjalanan cepat jalur darat!</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="schedule" id="schedule">
+      <h2><span>Rental</span> Mobil</h2>
+      <div class="container">
+        <div class="sopir">
+          <form action="/">
+            <input type="radio" />
+            <label for="sopir">Tanpa sopir</label>
+            <input type="radio" />
+            <label for="sopir">Dengan sopir</label>
+          </form>
+        </div>
+        <div class="lokasi">
+          <h4>Lokasi Rental</h4>
+          <form action="/">
+            <input type="search" />
+          </form>
+        </div>
+        <div class="tanggal">
+          <div class="mulai">
+            <h4>Tanggal Mulai Rental</h4>
+            <form action="/">
+              <input type="date" />
+            </form>
+          </div>
+          <div class="selesai">
+            <h4>Tanggal Selesai Rental</h4>
+            <form action="/">
+              <input type="date" />
+            </form>
+          </div>
+          <div class="cta-box">
+            <a href="#" class="cta"><i data-feather="search"></i> Pesan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plane" id="plane">
+      <h2><span>Tiket</span> Pesawat</h2>
+      <div class="container">
+        <div class="kelas">
+          <form action="/">
+            <input type="radio" />
+            <label for="kelas">Economy Class</label>
+            <input type="radio" />
+            <label for="kelas">Business Class</label>
+            <input type="radio" />
+            <label for="kelas">First Class</label>
+          </form>
+        </div>
+        <div class="penumpang">
+          <h4>Jumlah Penumpang</h4>
+          <form action="/">
+            <input type="number" />
+          </form>
+        </div>
+        <div class="tanggal">
+          <h4>Tanggal Keberangkatan</h4>
+          <form action="/">
+            <input type="date" />
+          </form>
+        </div>
+        <div class="tempat">
+          <div class="mulai">
+            <h4>Asal</h4>
+            <form action="/">
+              <input type="search" />
+            </form>
+          </div>
+          <div class="selesai">
+            <h4>Tujuan</h4>
+            <form action="/">
+              <input type="selesai" />
+            </form>
+          </div>
+          <div class="cta-box">
+            <a href="#" class="cta"><i data-feather="search"></i> Pesan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plane" id="plane">
+      <h2><span>Tiket</span> Kereta</h2>
+      <div class="container">
+        <div class="kelas">
+          <form action="/">
+            <input type="radio" />
+            <label for="kelas">Economy Class</label>
+            <input type="radio" />
+            <label for="kelas">Executive Class</label>
+            <input type="radio" />
+            <label for="kelas">Luxury Class</label>
+          </form>
+        </div>
+        <div class="penumpang">
+          <h4>Jumlah Penumpang</h4>
+          <form action="/">
+            <input type="number" />
+          </form>
+        </div>
+        <div class="tanggal">
+          <h4>Tanggal Keberangkatan</h4>
+          <form action="/">
+            <input type="date" />
+          </form>
+        </div>
+        <div class="tempat">
+          <div class="mulai">
+            <h4>Asal</h4>
+            <form action="/">
+              <input type="search" />
+            </form>
+          </div>
+          <div class="selesai">
+            <h4>Tujuan</h4>
+            <form action="/">
+              <input type="selesai" />
+            </form>
+          </div>
+          <div class="cta-box">
+            <a href="#" class="cta"><i data-feather="search"></i> Pesan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div class="footer-section">
+        <h3>Satya Travel</h3>
+        <ul>
+        <li>Tentang Satya Travel</li>
+        <li>Cara Pesan</li>
+        <li>Hubungi Kami</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Produk</h3>
+        <ul>
+        <li>Tiket Travel</li>
+        <li>Hotel</li>
+        <li>Tiket Kereta Api</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Lainnya</h3>
+        <ul>
+        <li>Syarat & Ketentuan</li>
+        <li>Pemberitahuan Privasi</li>
+        </ul>
+      </div>
+      <div class="footer-section payment-partners">
+        <h3>Partner Pembayaran</h3>
+        <img src="bca.png" alt="BCA" />
+        <img src="mandiri.png" alt="Mandiri" />
+      </div>
+      <div class="footer-section social-media">
+        <h3>Follow kami di</h3>
+        <ul>
+        <li><a href="https://twitter.com"><i class="fa-brands fa-x-twitter"></i>@SatyaTravel</a></li>
+        <li></li><a href="https://facebook.com"><i class="fa-brands fa-facebook"></i>SatyaTravel</a></li>
+        <li></li><a href="https://instagram.com"><i class="fa-brands fa-instagram"></i>@SatyaTravel</a></li>
+      </ul>
+      </div>
+      </div>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,433 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Web Travel</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+	<script src="https://unpkg.com/feather-icons"></script>
+	<script src="https://kit.fontawesome.com/9e511c20e6.js" crossorigin="anonymous"></script>
+	<style>
+		:root {
+			--primary: #b5a98f;
+  			--bg: #a55c3c;
+		}
+		body {
+			font-family: 'poppins', sans-serif;
+			background-color: #f4f4f4;
+		}
+		.navbar {
+        	display: flex;
+        	justify-content: space-between;
+        	align-items: center;
+        	padding: 1.4rem 7%;
+        	background-color: rgba(1, 1, 1, 0.8);
+        	border-bottom: 1px solid #5f4730;
+       	 	position: fixed;
+       	 	top: 0;
+        	left: 0;
+        	right: 0;
+        	z-index: 9999;
+      }
+
+      .navbar .navbar-logo {
+        	font-size: 2rem;
+        	font-weight: 700;
+        	color: #ddd;
+        	font-style: italic;
+      }
+
+      .navbar .navbar-logo span {
+        	color: var(--primary);
+      }
+
+      .navbar .navbar-nav a {
+        	color: #fff;
+        	display: inline-block;
+        	font-size: 1.2rem;
+        	margin: 0 1rem;
+      }
+
+      .navbar .navbar-extra a {
+        	color: #fff;
+        	margin: 0 0.5rem;
+      }
+		
+		.hero {
+		 	min-height: 95vh;
+ 		 	display: flex;
+		 	background-image: url(header.jpg);
+  	 	 	background-repeat: no-repeat;
+  		 	background-size: cover;
+		}
+		.hero::after {
+  		 	content: "";
+  		 	display: block;
+  		 	position: absolute;
+ 		 	width: 100%;
+ 		 	height: 30%;
+ 		 	bottom: 0;
+ 		 	background: linear-gradient(
+   		 	0deg,
+ 	    	rgb(211, 207, 191) 5%,
+ 	    	rgba(255, 255, 255, 0) 50%
+ 		 	);
+		}
+		.hero .content h1 {
+  		 	font-size: 3rem;
+ 		 	color: #010101;
+ 		 	line-height: 0;
+		}
+		.hero .content h2 {
+  		 	font-size: 1.3rem;
+ 		 	color: #010101;
+ 		 	line-height: 0.5;
+ 		 	font-weight: 3000;
+		}
+		.about, .contact {
+ 			 padding: 6.5rem 7% 1.4rem;
+		}
+
+		.about h2, .contact h2 {
+ 			 text-align: center;
+ 			 font-size: 2.6rem;
+ 			 margin-bottom: 3rem;
+		}
+
+		.about h2 span , .contact h2 span {
+			  color: var(--bg);
+		}
+
+		.about .row  {
+ 			 display: flex;
+		}
+
+		.about .row .about-img {
+  			flex: 1 1 45rem;
+		}
+
+		.about .row .about-img img {
+  			width: 100%;
+		}
+
+		.about .row .content {
+ 			 flex: 1 1 35rem;
+ 			 padding: 0 1rem;
+		}
+
+		.about .row .content h3 {
+			  font-size: 3rem;
+ 			 margin-bottom: 1rem;
+		}
+
+		.about .row .content p {
+			  margin-bottom: 0.8rem;
+ 			 font-size: 1.6rem;
+ 			 line-height: 1.6;
+		}
+		.footer {
+   			 background: #fff;
+   			 padding: 20px;
+   			 display: flex;
+   			 flex-wrap: wrap;
+   			 justify-content: space-between;
+  		}
+  		.footer-section {
+    		flex-basis: 20%;
+   			 padding: 10px;
+  		}
+  		.footer-section h3 {
+   		 	color: #00a8e1;
+  		}
+  		.footer-section ul {
+    		list-style-type: none;
+    		padding: 0;
+  		}
+  		.footer-section ul li {
+    		margin-bottom: 10px;
+  		}
+ 		.payment-partners img {
+  		  width: 50px;
+ 		   margin-right: 10px;
+ 		 }
+ 		.social-media img {
+   			 width: 24px;
+   			 margin-right: 10px;
+ 		 }
+		.contact .content {
+			text-align: center;
+			font-size: 1.6rem;
+		}
+		main {
+			font-family: sans-serif;
+		}
+		section.pesan {
+            margin-top: 20px;
+        }
+
+        section.pesan h2 {
+            color: #333;
+        }
+
+        ul.destinations {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        li.pesan {
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        li.pesan:hover {
+            transform: scale(1.05);
+        }
+
+		.hero .content {
+			margin-top: 13rem;
+			margin-left: 7rem;
+		}
+
+		.hero .content a {
+			color: #010101;
+		}
+
+		.sidebar {
+			position: fixed;
+			top: 0;
+			right: 0;
+			height: 95vh;
+			width: 350px;
+			z-index: 999;
+			background-color: rgba(1, 1, 1, 0.8);
+			box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+			display: none;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+		}
+
+		.login {
+			width: 320px;
+			padding: 30px;
+			padding-top: 156px;
+		}
+
+		.login-field {
+			padding: 20px 0px;
+			position: relative;
+		}
+
+		.login-icon {
+			position: absolute;
+			top: 30px;
+			color: #fff;
+		}
+
+		.login-input {
+			border: none;
+			border-bottom: 2px solid #D1D1D4;
+			background: none;
+			padding: 10px;
+			padding-left: 24px;
+			font-weight: 700;
+			width: 75%;
+			transition: .2s;
+			color: #f4f4f4;
+		}
+
+		.login-input:active,
+		.login-input:focus,
+		.login-input:hover {
+			outline: none;
+			border-bottom-color: #00a8e1;
+		}
+
+		.button-login {
+			background: #fff;
+			font-size: 14px;
+			margin-top: 30px;
+			padding: 16px 20px;
+			border-radius: 26px;
+			border: 1px solid #D4D3E8;
+			text-transform: uppercase;
+			font-weight: 700;
+			display: flex;
+			align-items: center;
+			width: 50%;
+			color: #00a8e1;
+			box-shadow: 0px 2px 2px #507581;
+			cursor: pointer;
+			transition: .2s;
+		}
+
+		.login-submit:active,
+		.login-submit:focus,
+		.login-submit:hover {
+			border-color: #6A679E;
+			outline: none;
+		}
+
+		.button-icon {
+			font-size: 24px;
+			margin-left: auto;
+			color: #f4f4f4;
+		}
+
+	</style>
+</head>
+<body>
+
+	<!--Navbar start-->
+	<nav class="navbar">
+		<a href="#" class="navbar-logo" style="text-decoration:none">SATYA<span>TRAVEL</span></a>
+  
+		<div class="navbar-nav">
+		  <a href="#beranda" style="text-decoration:none">Beranda</a>
+		  <a href="#about" style="text-decoration:none">Tentang Kami</a>
+		  <a href="#contact" style="text-decoration:none">Kontak</a>
+		</div>
+  
+		<div class="navbar-extra">
+		  <a href="#" id="log-in" onclick="showSidebar()"><i data-feather="log-in"></i></a>
+		</div>
+
+		<div class="sidebar">
+			<a href="#" id="close" style="text-decoration:none" onclick="hideSidebar()"><i data-feather="x"></i></a>
+			<form class="login">
+				<div class="login-field">
+					<i class="login-icon" data-feather="user"></i>
+				    <input type="text" class="login-input" placeholder="Username/Email">
+				</div>
+				<div class="login-field">
+					<i class="login-icon" data-feather="lock"></i>
+					<input type="password" class="login-input" placeholder="Password">
+				</div>
+				<button class="button-login">
+					<span class="button-text">Login</span>
+					<i class="button-icon" data-feather="chevron-right"></i>
+				</button>
+			</form>
+		</div>
+	  </nav>
+	<!--Navbar end-->
+</header>
+
+<!--hero start-->
+<main>
+	<section class="hero" id="beranda">
+		<main class="content">
+<table>
+	<tr>
+		<td width="100%" height="75%" colspan="13">
+			<h1>SATYA TRAVEL</h1>
+			<h2>Bersama kami perjalanan anda pasti aman!</h2>
+			<a href="isi1.html" style="text-decoration:none"><section class="pesan">
+            <ul class="destinations">
+                <li class="pesan">
+                    <h3>Pesan Disini!</h3>
+            </ul>
+        </section></a>
+		</td>
+	</tr>
+</table>
+</main>
+</main>
+</section>
+<!--hero end-->
+<!--about start-->
+<section id="about" class="about">
+	<h2>Tentang <span>Kami</span></h2>
+
+	<div class="row">
+	  <div class="about-img">
+		<img src="travel.jpg"/>
+	  </div>
+	  <div class="content">
+		<p>
+		  Satya travel merupakan sebuah perusahaan yang memberikan anda jasa travel dengan kenyamanan yang tidak dapat dibandingkan dengan jasa travel yang lain!
+		</p>
+	  </div>
+	</div>
+  </section>
+<!--about end-->
+<section id="contact" class="contact">
+	<h2>Hubungi <span>Kami</span></h2>
+
+	  <div class="content">
+		<p>
+		  Hubungi customer service kami pada jam kerja
+		  <br>
+<i class="fa-solid fa-phone"></i><b>021-27452304</b>
+		</p>
+	  </div>
+	</div>
+  </section>
+<!--contact start-->
+<div class="footer">
+	<div class="footer-section">
+	  <h3>Satya Travel</h3>
+	  <ul>
+		<li>Tentang Satya Travel</li>
+		<li>Cara Pesan</li>
+		<li>Hubungi Kami</li>
+	  </ul>
+	</div>
+	<div class="footer-section">
+	  <h3>Produk</h3>
+	  <ul>
+		<li>Tiket Travel</li>
+		<li>Hotel</li>
+		<li>Tiket Kereta Api</li>
+	  </ul>
+	</div>
+	<div class="footer-section">
+	  <h3>Lainnya</h3>
+	  <ul>
+		<li>Syarat & Ketentuan</li>
+		<li>Pemberitahuan Privasi</li>
+	  </ul>
+	</div>
+	<div class="footer-section payment-partners">
+	  <h3>Partner Pembayaran</h3>
+	  <img src="bca.png" alt="BCA" />
+	  <img src="mandiri.png" alt="Mandiri" />
+	</div>
+	<div class="footer-section social-media">
+	  <h3>Follow kami di</h3>
+	  <ul>
+	  <li><a href="https://twitter.com"><i class="fa-brands fa-x-twitter"></i>@SatyaTravel</a></li>
+	  <li></li><a href="https://facebook.com"><i class="fa-brands fa-facebook"></i>SatyaTravel</a></li>
+	  <li></li><a href="https://instagram.com"><i class="fa-brands fa-instagram"></i>@SatyaTravel</a></li>
+	</ul>
+	</div>
+  </div>
+
+  <script>
+	feather.replace();
+	function showSidebar(){
+		const sidebar = document.querySelector('.sidebar')
+		sidebar.style.display = 'flex'
+	}
+	function hideSidebar(){
+		const sidebar = document.querySelector('.sidebar')
+		sidebar.style.display = 'none'
+	}
+  </script>
+</body>
+</html>
